@@ -15,7 +15,7 @@ studentRouter.get("/", async function (req, res) {
 
 });
 
-studentRouter.post("/add", function (req, res) {
+studentRouter.post("/add",async function (req, res) {
     let mongo_collection = mongodb.getMongoClient().db("school").collection("students");
     let myobj = {
       name: req.body.name,
@@ -24,10 +24,10 @@ studentRouter.post("/add", function (req, res) {
       age: req.body.age
     };
     try {
-        mongo_collection.insertOne(myobj);
+        result = await mongo_collection.insertOne(myobj);
         console.log("Inserted student: " + myobj);
 
-        response.json(res);
+        res.json(result);
     } catch (error) {
         console.error('Failed to insert student!', error);
     }
