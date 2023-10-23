@@ -8,7 +8,7 @@ class StudentList extends React.Component {
     }
     
     async callAPI() {
-        const response = await fetch("http://localhost:5001/students", {
+        const response = await fetch("https://mern-stack-test-backend-gg98.onrender.com/students", {
             method: "GET"
         });
 

@@ -26,7 +26,7 @@ class CreateStudent extends React.Component {
   
     async handleSubmit(event) {
         const newStudent = { ...this.state };
-        const response = await fetch("http://localhost:5001/students/add", {
+        const response = await fetch("https://mern-stack-test-backend-gg98.onrender.com/students/add", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
