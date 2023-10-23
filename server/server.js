@@ -5,6 +5,8 @@ const mongodb = require("./src/mongodb");
 
 var studentsRouter = require("./src/routes");
 
+console.log(process.env);
+
 const port = process.env.PORT || 5000;
 
 const app = express();
