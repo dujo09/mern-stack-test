@@ -1,9 +1,9 @@
 require("dotenv").config({ path: "./config.env" });
 const express = require("express");
 const cors = require("cors");
-const mongodb = require("./mongodb");
+const mongodb = require("./src/mongodb");
 
-var studentsRouter = require("./routes");
+var studentsRouter = require("./src/routes");
 
 const port = process.env.PORT;
 
