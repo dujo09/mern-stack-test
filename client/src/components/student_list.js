@@ -11,13 +11,9 @@ class StudentList extends React.Component {
         const response = await fetch("https://mern-stack-test-backend-gg98.onrender.com/students", {
             method: "GET"
         });
-
         const studentsJSON = await response.json();
+        
         this.setState({students: studentsJSON});
-
-        // fetch("http://localhost:5001/students")
-        //     .then(res => res.text())
-        //     .then(res => this.setState({ apiResponse: res }));
     }
     
     componentWillMount() {
