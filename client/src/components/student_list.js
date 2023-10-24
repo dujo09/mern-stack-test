@@ -6,7 +6,8 @@ class StudentList extends React.Component {
         super(props);
         this.state = { students: [] };
 
-        this.getStudentDataFromBackend = this.getStudentDataFromBackend.bind(this)
+        this.getStudentDataFromBackend = this.getStudentDataFromBackend.bind(this);
+        this.clearStudentDataFromFrontend = this.clearStudentDataFromFrontend.bind(this)
     }
     
     async getStudentDataFromBackend() {
@@ -15,9 +16,11 @@ class StudentList extends React.Component {
         });
 
         const students = await response.json();
-        console.log("Students: ${ students }");
-
         this.setState({students: students});
+    }
+
+    clearStudentDataFromFrontend() {
+        this.setState({ students: []});
     }
     
     getStudentsContent() {
@@ -42,10 +45,9 @@ class StudentList extends React.Component {
         return [
             <div className='student_list'>
                 {this.getStudentsContent()}
-                {this.state.students}
 
-                <button onClick={this.getStudentDataFromBackend}>Fetch student data</button>
-                <button onClick={this.setState({ students: []})}>Clear student data (from frontend)</button>
+                <button onClick={this.getStudentDataFromBackend}>Send GET request to backend</button>
+                <button onClick={this.clearStudentDataFromFrontend}>Clear data (from frontend)</button>
             </div>
         ];
       }

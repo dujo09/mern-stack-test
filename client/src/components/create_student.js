@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './create_student.css';
 
 class CreateStudent extends React.Component {
     constructor(props) {
@@ -24,7 +25,7 @@ class CreateStudent extends React.Component {
         });
     }
   
-    async handleSubmit(event) {
+    async sendDataToBackend(event) {
         const newStudent = { ...this.state };
         const response = await fetch("https://mern-stack-test-backend-gg98.onrender.com/students/add", {
             method: "POST",
@@ -45,7 +46,7 @@ class CreateStudent extends React.Component {
   
     render() {
       return (
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.sendDataToBackend}>
           <label>
             name:
             <input name="name" type="text" value={this.state.name} onChange={this.handleChange} />
