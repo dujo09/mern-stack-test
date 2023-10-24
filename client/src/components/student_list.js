@@ -12,8 +12,10 @@ class StudentList extends React.Component {
             method: "GET"
         });
 
-        const studentsData = await response.json();
-        this.setState({students: studentsData});
+        const students = await response.json();
+        console.log("Students: ${ students }");
+
+        this.setState({students: students});
     }
     
     getStudentsContent() {
