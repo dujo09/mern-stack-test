@@ -16,7 +16,7 @@ studentRouter.post("/add",async function (req, res) {
       name: req.body.name,
       surname: req.body.surname,
       email: req.body.email,
-      age: req.body.age
+      age: Number(req.body.age)
     };
 
     let mongo_collection = mongodb.getMongoClient().db("school").collection("students");
