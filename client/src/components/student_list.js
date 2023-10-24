@@ -5,6 +5,8 @@ class StudentList extends React.Component {
     constructor(props) {
         super(props);
         this.state = { students: [] };
+
+        this.getStudentDataFromBackend = this.getStudentDataFromBackend.bind(this)
     }
     
     async getStudentDataFromBackend() {
