@@ -5,7 +5,7 @@ import CreateStudent from './components/create_student';
 function App() {
   return (
     <div className="App">
-      {/* <StudentList></StudentList> */}
+      <StudentList></StudentList>
       <br/>
       <CreateStudent></CreateStudent>
     </div>
