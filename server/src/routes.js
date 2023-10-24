@@ -3,7 +3,7 @@ const mongodb = require("./mongodb");
 
 const studentsRouter = express.Router();
 
-studentsRouter.get("/", async function (req, res) {
+studentsRouter.get("/students", async function (req, res) {
     console.log("Fetching students from database...");
 
     let studentsCollection = mongodb.getMongoClient().db("school").collection("students");
@@ -14,7 +14,7 @@ studentsRouter.get("/", async function (req, res) {
     res.send(students);
 });
 
-studentsRouter.post("/add",async function (req, res) {
+studentsRouter.post("/students/add",async function (req, res) {
     let newStudent = {
       name: req.body.name,
       surname: req.body.surname,
