@@ -7,19 +7,15 @@ class StudentList extends React.Component {
         this.state = { students: [] };
     }
     
-    async callAPI() {
+    async getStudentDataFromBackend() {
         const response = await fetch("https://mern-stack-test-backend-gg98.onrender.com/students", {
             method: "GET"
         });
-        const studentsJSON = await response.json();
-        
-        this.setState({students: studentsJSON});
+
+        const students = await response.json();
+        this.setState({students: students});
     }
     
-    componentWillMount() {
-        this.callAPI();
-    }
-
     getStudentsContent() {
         let content = [];
         for (let i = 0; i < this.state.students.length; i++) {
@@ -42,6 +38,9 @@ class StudentList extends React.Component {
         return [
             <div className='student_list'>
                 {this.getStudentsContent()}
+
+                <button onClick={this.getStudentDataFromBackend}>Fetch student data</button>
+                <button onClick={this.setState({ students: []})}>Clear student data (from frontend)</button>
             </div>
         ];
       }

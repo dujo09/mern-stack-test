@@ -13,6 +13,6 @@ app.use(express.json());
 app.use("/students", studentsRouter);
 
 app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
+    console.log(`Backend server is running on port: ${port}`);
     mongodb.connectToMongoCluster().catch(console.dir);
 })

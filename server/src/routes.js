@@ -1,34 +1,40 @@
 const express = require("express");
-const studentRouter = express.Router();
 const mongodb = require("./mongodb");
 
-studentRouter.get("/", async function (req, res) {
-    let mongo_collection = mongodb.getMongoClient().db("school").collection("students");
-    const student = await mongo_collection.find({}).toArray();
+const studentsRouter = express.Router();
 
-    console.log("Fetched all students successfully!");
+studentsRouter.get("/", async function (req, res) {
+    console.log("Fetching students from database...");
 
-    res.send(student);
+    let studentsCollection = mongodb.getMongoClient().db("school").collection("students");
+    const students = await studentsCollection.find({}).toArray();
+
+    console.log("Fetched students successfully!");
+
+    res.send(students);
 });
 
-studentRouter.post("/add",async function (req, res) {
-    let myobj = {
+studentsRouter.post("/add",async function (req, res) {
+    let newStudent = {
       name: req.body.name,
       surname: req.body.surname,
       email: req.body.email,
       age: req.body.age
     };
 
-    let mongo_collection = mongodb.getMongoClient().db("school").collection("students");
+    console.log("Inserting student \"${ newStudent.name } ${ newStudent.surname }\" into database...");
+
+    let studentsCollection = mongodb.getMongoClient().db("school").collection("students");
 
     try {
-        result = await mongo_collection.insertOne(myobj);
-        console.log("Inserted student: " + myobj.name);
+        response = await studentsCollection.insertOne(newStudent);
 
-        res.json(result);
+        console.log("Student \"${ newStudent.name } ${ newStudent.surname }\" inserted successfully!");
+
+        res.json(response); // TODO: .json or .send
     } catch (error) {
-        console.error('Failed to insert student!', error);
+        console.error("Failed to insert student \"${ newStudent.name } ${ newStudent.surname }\", error: ${ error }");
     }
 });
 
-module.exports = studentRouter; 
+module.exports = studentsRouter; 
