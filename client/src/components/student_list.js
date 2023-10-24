@@ -42,6 +42,7 @@ class StudentList extends React.Component {
         return [
             <div className='student_list'>
                 {this.getStudentsContent()}
+                {this.state.students}
 
                 <button onClick={this.getStudentDataFromBackend}>Fetch student data</button>
                 <button onClick={this.setState({ students: []})}>Clear student data (from frontend)</button>

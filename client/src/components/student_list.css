@@ -2,7 +2,12 @@
     margin-bottom: 50px;
 }
 
-ul {
+ul, button {
     font-size: 28px;
+}
+
+button {
+    display: block;
+    padding: 10px;
 }
 
