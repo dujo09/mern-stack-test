@@ -22,18 +22,18 @@ studentsRouter.post("/add",async function (req, res) {
       age: Number(req.body.age)
     };
 
-    console.log("Inserting student \"${ newStudent.name } ${ newStudent.surname }\" into database...");
+    console.log("Inserting student \"%s %s\" into database...", newStudent.name, newStudent.surname);
 
     let studentsCollection = mongodb.getMongoClient().db("school").collection("students");
 
     try {
         response = await studentsCollection.insertOne(newStudent);
 
-        console.log("Student \"${ newStudent.name } ${ newStudent.surname }\" inserted successfully!");
+        console.log("Student \"%s %s\" inserted successfully!", newStudent.name, newStudent.surname);
 
         res.json(response); // TODO: .json or .send
     } catch (error) {
-        console.error("Failed to insert student \"${ newStudent.name } ${ newStudent.surname }\", error: ${ error }");
+        console.error("Failed to insert student \"%s %s\", error: %s", newStudent.name, newStudent.surname, error);
     }
 });
 
