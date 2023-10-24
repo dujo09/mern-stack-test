@@ -63,7 +63,7 @@ class CreateStudent extends React.Component {
             age:
             <input name="age" type="number" value={this.state.age} onChange={this.handleChange} />
           </label>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Send data to backend (/students/add endpoint)" />
         </form>
       );
     }

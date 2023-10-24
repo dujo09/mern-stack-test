@@ -46,8 +46,8 @@ class StudentList extends React.Component {
             <div className='student_list'>
                 {this.getStudentsContent()}
 
-                <button onClick={this.getStudentDataFromBackend}>Send GET request to backend</button>
-                <button onClick={this.clearStudentDataFromFrontend}>Clear data (from frontend)</button>
+                <button onClick={this.getStudentDataFromBackend}>Send GET request to backend (/students endpoint)</button>
+                <button onClick={this.clearStudentDataFromFrontend}>Clear state</button>
             </div>
         ];
       }
